@@ -82,3 +82,8 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 alias air='~/.air'
+
+# OrbStack
+export PATH="/Applications/OrbStack.app/Contents/MacOS:$PATH"
+
+alias fzf='fzf --preview="bat --color=always {}"'
