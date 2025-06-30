@@ -22,14 +22,6 @@ alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-u
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-# pnpm
-export PNPM_HOME="/Users/anshumansingh/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # C/C++ stuff
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
