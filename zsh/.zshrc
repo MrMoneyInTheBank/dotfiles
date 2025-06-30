@@ -59,6 +59,7 @@ alias chrome="open -a Google\ Chrome"
 alias music="open -a Spotify"
 alias whatsapp="open -a Whatsapp"
 alias settings="open -a System\ Settings"
+alias gpt="open -a chatGPT"
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
