@@ -38,8 +38,8 @@ function pen() {
 }
 
 ## pomodoro stuff
-alias work="timer 25s --fullscreen -n Work && say 'Work is done, time to party'"
-alias rest="timer 5s --fullscreen -n Rest && say 'Get back to work you rascal.'"
+alias work="timer 25m --fullscreen -n Work && say 'Work is done, time to party'"
+alias rest="timer 5m --fullscreen -n Rest && say 'Get back to work you rascal.'"
 
 pomodoro() {
   local sessions=$1
