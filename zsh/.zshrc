@@ -38,15 +38,23 @@ function pen() {
 }
 
 ## pomodoro stuff
-alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
-        -title 'Work Timer is up! Take a Break 😊'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
-        
-alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 😬'\
-        -appIcon '~/Pictures/pumpkin.png'\
-        -sound Crystal"
+alias work="timer 25s --fullscreen -n Work && say 'Work is done, time to party'"
+alias rest="timer 5s --fullscreen -n Rest && say 'Get back to work you rascal.'"
+
+pomodoro() {
+  local sessions=$1
+
+  if [[ -z $sessions || $sessions -le 0 ]]; then
+    echo "Usage: pomodoro <number_of_sessions>"
+    return 1
+  fi
+
+  for ((i=1; i<=sessions; i++)); do
+    work
+    rest
+  done
+  say "Alright boss, time to call it quits."
+}
 
 # Go stuff
 export PATH=$PATH:$(go env GOPATH)/bin
