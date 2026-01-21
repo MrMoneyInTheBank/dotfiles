@@ -43,24 +43,28 @@ I use [GNU Stow](https://www.gnu.org/software/stow/) to manage these dotfiles. I
 
 3. **Stow the configs you want**:
    ```bash
-   # Stow everything
-   stow */
-   
-   # Or stow specific top-level directories
-   stow config  # This stows all the config subdirectories
-   stow zsh
-   
-   # To stow individual config items, cd into config first
-   cd config && stow nvim && cd ..
+   # Zsh files live in $HOME (e.g. ~/.zshrc, ~/.zprofile, ...)
+   stow -t ~ zsh
+
+   # Everything under ./config is meant to live under ~/.config/*
+   # (note: `stow config` from the repo root would create/link into ~/config, NOT ~/.config)
+   stow -t ~/.config config
+
+   # If you only want one app from ./config, stow that sub-package from within ./config:
+   (cd config && stow -t ~/.config nvim) # This works because `nvim` is a package relative to ./config
+
    ```
 
 ### How Stow Works
 
-Stow creates symlinks from your home directory to the files in this repo. So when you run `stow nvim`, it links `~/.config/nvim` to `~/dotfiles/config/nvim`. Pretty neat!
+Stow creates symlinks in a **target directory** that mirror the directory structure inside the **package directory**.
+
+- If you run `stow zsh` from `~/dotfiles`, the default target is `~` (your home directory), so it links things like `~/.zshrc` → `~/dotfiles/zsh/.zshrc`.
+- For this repo’s `config/` package, you usually want the target to be `~/.config`, so you run `stow -t ~/.config config`. That links `~/.config/nvim` → `~/dotfiles/config/nvim`, `~/.config/ghostty` → `~/dotfiles/config/ghostty`, etc.
 
 The structure here mirrors where files should go on your system:
-- `config/` → `~/.config/`
 - `zsh/` → `~/` (for `.zshrc`, `.zprofile`, etc.)
+- `config/` → `~/.config/` (when you use `-t ~/.config`)
 
 ### Managing Changes
 
@@ -80,22 +84,26 @@ git push
 
 1. Clone this repo
 2. Install stow
-3. Run `stow */` 
-4. You're done! ✨
+3. Run:
+   ```bash
+   stow -t ~ zsh
+   stow -t ~/.config config
+   ```
+4. You're done!
 
 ### Unstowing
 
 If you need to remove the symlinks for any reason:
 
 ```bash
-# Remove specific top-level directory
-stow -D config
+# Remove zsh symlinks from $HOME
+stow -D -t ~ zsh
 
-# Remove individual config (from within config directory)
-cd config && stow -D nvim && cd ..
+# Remove config symlinks from ~/.config
+stow -D -t ~/.config config
 
-# Remove everything
-stow -D */
+# If you stowed a single app from within ./config:
+(cd config && stow -D -t ~/.config nvim)
 ```
 
 ## Notes
