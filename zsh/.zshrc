@@ -4,7 +4,11 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
+supports_color() {
+  [[ -n "$COLORTERM" ]] && [[ $(tput colors 2>/dev/null) -ge 256 ]]
+}
+
+if supports_color; then
     eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
     alias vim="nvim"
 else
