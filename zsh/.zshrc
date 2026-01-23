@@ -26,6 +26,8 @@ alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-u
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+alias y="yazi"
+
 # C/C++ stuff
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
