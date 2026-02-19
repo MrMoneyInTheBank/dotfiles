@@ -27,6 +27,7 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 alias y="yazi"
+export EDITOR=nvim
 
 # C/C++ stuff
 export CC=/usr/bin/clang
