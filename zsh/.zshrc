@@ -26,6 +26,8 @@ alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-u
 eval "$(zoxide init zsh)"
 alias cd="z"
 
+alias t=tmux
+
 alias y="yazi"
 export EDITOR=nvim
 
