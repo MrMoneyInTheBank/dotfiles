@@ -92,6 +92,8 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+alias bn="bun"
+
 alias air='~/.air'
 
 # OrbStack
