@@ -15,6 +15,8 @@ else
     unalias vim 2>/dev/null
 fi
 
+alias c="cursor"
+
 alias ":q"="exit"
 
 eval "$(fzf --zsh)"
