@@ -102,3 +102,6 @@ alias air='~/.air'
 export PATH="/Applications/OrbStack.app/Contents/MacOS:$PATH"
 
 alias fzf='fzf --preview="bat --color=always {}"'
+
+# Jobit
+alias j="jobit"
